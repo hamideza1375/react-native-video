@@ -1,22 +1,27 @@
 import React from 'react';
-import { View } from 'react-native';
-import Video from "react-native-video";
+import Button from './Components/Button';
+import { Row } from './Components/Html';
 
 const App = () => {
+
+
   return (
-    <View>
+    <Row style={{margin:55}}>
+    <Button
+    bgcolor={'red'}
+    color={'silver'}
+    border={[,'green']}
+    fontSize={17}
+    padding={1}
+    paddingTop={1}
+    paddingBottom={1}
+    paddingLeft={1}
+    paddingRight={1}
+     >
+      onClick
+      </Button>
 
-      <Video
-        muted={false}
-        repeat={false}
-        resizeMode={"cover"}
-        controls={true} style={{ width: '100%', height: 333, borderWidth: 5 }}
-        rate={1.0}
-        ignoreSilentSwitch={"ignore"}
-        source={{ uri: 'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }} />
-
-    </View>
+    </Row>
   )
 }
-
 export default App

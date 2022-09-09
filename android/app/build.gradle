@@ -131,7 +131,7 @@ def reactNativeArchitectures() {
 
 android {
     ndkVersion rootProject.ext.ndkVersion
-    //! react-native-video
+    //! react-native-video notifee webrtc ...
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -264,6 +264,24 @@ android {
 }
 
 dependencies {
+    //! play-services-tasks = 
+    // implementation 'com.google.android.gms:play-services-tasks:18.0.2'
+  
+   //! react-native-fs
+   implementation project(':react-native-fs')
+
+   //! react-native-map
+   // go to https://developers.google.com/android/guides/setup
+   // go to https://github.com/react-native-maps/react-native-maps/blob/HEAD/docs/installation.md
+   implementation(project(':react-native-maps')){
+       exclude group: 'com.google.android.gms', module: 'play-services-base'
+       exclude group: 'com.google.android.gms', module: 'play-services-maps'
+   }
+   implementation 'com.google.android.gms:play-services-base:18.0.1'
+   implementation 'com.google.android.gms:play-services-location:19.0.1'
+   implementation 'com.google.android.gms:play-services-maps:18.0.2'
+   //! react-native-map
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     //noinspection GradleDynamicVersion
