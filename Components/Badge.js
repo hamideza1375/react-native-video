@@ -30,8 +30,8 @@ const styles = StyleSheet.create({
         fontWeight: '900',
     },
     viewBadge: {
-        width: 17,
-        height: 17,
+        width: 18,
+        height: 18,
         borderRadius: 90,
         justifyContent: 'center',
         alignItems: 'center',

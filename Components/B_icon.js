@@ -5,7 +5,6 @@ import Icon2 from 'react-native-vector-icons/dist/FontAwesome';
 
 
 const B_icon = (prop) => {
-  const [show, setshow] = useState(false)
   const { color, bgcolor="#02f", size = 1, chatRef, icon, icon2, border="#01c", style, iconSize, iconPress } = prop
 
 

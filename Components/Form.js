@@ -4,12 +4,12 @@ import Input from './Input'
 import Button from './Button'
 import {CheckBox} from './Html'
 import Swiper from './Swiper'
-import {Yub} from './yub'
+import yub from '../states/yub'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon5 from 'react-native-vector-icons/FontAwesome5';
 import { launchImageLibraryAsync as launchImageLibrary } from "react-native-image-picker";
 // import { useFocusEffect } from '@react-navigation/native'
-const newObj = new Proxy({}, Yub);
+const newObj = new Proxy({}, yub);
 
 
 

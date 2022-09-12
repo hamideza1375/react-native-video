@@ -16,10 +16,10 @@ const Dropdown = (props) => {
   return (
     <Pressable >
       <Pressable
-        onPressIn={() => { setshow(setshow(!show)); setTimeout(() => { setshow(setshow(!show)) }, 1) }}
+        onPressIn={() => { setshow(!show); setTimeout(() => { setshow(!show) }, 1) }}
 
         onPress={() => {
-          () => { setshow(setshow(!show)); setTimeout(() => { setshow(setshow(!show)) }, 2) };
+          () => { setshow(!show); setTimeout(() => { setshow(!show) }, 2) };
           setTimeout(() => {
             ref?.current && ref.current.setNativeProps({ style: { transform: [{ scale: 1 }] } })
           }, 5);

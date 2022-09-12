@@ -55,7 +55,7 @@ const App = (props) => {
             if(!props.cansel){
             if (das.length > 2) das = []
             das.push(e.nativeEvent.pageX)
-            if (das.length > 1 && das.length <= 2) {
+            if (das.length > 2 && das.length <= 3) {
               if ((das[0] < das[1]) == false) {
                 if (!right) {
                   if(props.iconRight){

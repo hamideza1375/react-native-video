@@ -1,27 +1,11 @@
+
 import React from 'react';
-import Button from './Components/Button';
-import { Row } from './Components/Html';
+import Video from './components/Video';
 
-const App = () => {
-
-
+export default function App() {
   return (
-    <Row style={{margin:55}}>
-    <Button
-    bgcolor={'red'}
-    color={'silver'}
-    border={[,'green']}
-    fontSize={17}
-    padding={1}
-    paddingTop={1}
-    paddingBottom={1}
-    paddingLeft={1}
-    paddingRight={1}
-     >
-      onClick
-      </Button>
-
-    </Row>
-  )
+    <Video source={{uri:'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}} controls/>
+  );
 }
-export default App
+
+
