@@ -1,6 +1,8 @@
-import React from 'react'
-import { View, Text, TextInput, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react'
+import { View, Text, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import _Button from './Button';
+// import {notoserif} from './font.scss'
 
 
 let fontFamily = 'serif'
@@ -10,79 +12,8 @@ let fontSize = 16
 // btitrbold
 // byekan
 
-const _Button = React.forwardRef((prop, ref) => <TouchableOpacity ref={ref} onPress={prop.onClick} {...prop} style={[{
-  backgroundColor: '#ccc', paddingHorizontal: 17, backgroundColor: "white", justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderRadius: 5, textAlign: 'center',
-}, prop.style]} ><Text style={[{ fontSize: 17 }, prop.textStyle]} >{prop.children}</Text></TouchableOpacity>)
-
-
-
-export const Button = React.forwardRef((prop,ref) => {
-  const { color, style, outline, bgcolor, children, border = [], fontSize = 17, padding, paddingTop, paddingBottom, paddingLeft, paddingRight, paddingVertical, paddingHorizontal, height = 46, width, margin, marginTop, marginBottom, marginLeft, marginRight, marginVertical, marginHorizontal } = prop
-
-  return (
-    !outline ?
-      <_Button
-        {...prop}
-        ref={ref}
-        style={[
-          {
-            backgroundColor: (bgcolor == 'red') && '#f33' ||
-              (!bgcolor) && '#0099ff' ||
-              (bgcolor == 'blue') && '#22f' ||
-              (bgcolor == 'green') && '#292' ||
-              (bgcolor == 'yellow') && '#fa0' ||
-              (bgcolor == 'black') && '#555' ||
-              bgcolor
-          },
-          !color && (bgcolor == 'white' ? { color: '#555' } : { color: 'white' }) ||
-          { color: color }, bgcolor == 'white' ? {} :
-            {
-              borderColor: !border[1] && ((!bgcolor) ? '#0091EA' :
-                bgcolor == 'yellow' ? '#ca0' : bgcolor) || border[1]
-            }, {
-            borderWidth: border[0] ? border[0] : 1,
-            height, width, margin, marginTop, marginBottom, marginLeft, marginRight, marginVertical, marginHorizontal,
-          }, style]}
-
-        textStyle={[
-          !color && (bgcolor == 'white' ?
-            { color: '#555' } :
-            { color: 'white' }) ||
-          { color: color },
-          { paddingHorizontal, paddingVertical, fontSize, padding, paddingTop, paddingBottom, paddingLeft, paddingRight, }]}>
-      </_Button>
-      :
-      <_Button
-        {...prop}
-        style={[
-          , bgcolor == 'white' ? {} :
-            { borderColor: !border[1] && (bgcolor == 'yellow' && '#fc3' || bgcolor || '#3399ff') || border[1] },
-          {
-            borderWidth: border[0] ? border[0] : 1,
-            height, width, margin, marginTop, marginBottom, marginLeft, marginRight, marginVertical, marginHorizontal,
-          },
-          style]}
-
-        textStyle={[color &&
-          { color: color } ||
-          !color && bgcolor &&
-          { color: bgcolor } ||
-          { color: '#3399ff' },
-        { paddingHorizontal, paddingVertical, fontSize, padding, paddingTop, paddingBottom, paddingLeft, paddingRight }]}>
-        {children}
-      </_Button>
-  )
-})
-
-
-
-
-
-
-
-
-
-
+export const Button = React.forwardRef((prop, ref) => <TouchableOpacity ref={ref} onPress={prop.onClick} {...prop} style={[{ backgroundColor: '#ccc', paddingHorizontal: 17, backgroundColor: "white", justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderRadius: 5, textAlign: 'center', 
+}, prop.style]} ><Text style={[{fontSize:17},prop.textStyle]} >{prop.children}</Text></TouchableOpacity>)
 
 export const Div = React.forwardRef((props, ref) => <View ref={ref} onStartShouldSetResponder={props.onClick} {...props} style={[{ paddingVertical: 5 }, props.className, props.style]} >{props.children}</View>)
 
@@ -157,19 +88,14 @@ export const Small = React.forwardRef((props, ref) => {
   else return (<Text onPress={props.onClick} ref={ref} {...props} style={[{ fontFamily, fontSize: 13, marginVertical: 10, color: '#444', fontWeight: '600' }, props.className, props.style]}  >{props.children}</Text>)
 })
 
-
-
-export const Input = React.forwardRef((props, ref) =>
-  <View style={[styles.container, props.style]} >
-    <TextInput ref={ref} autoCapitalize='none' autoCorrect={false} spellCheck={true} {...props} style={[{ textAlign: "right", fontSize: 15, padding: 6, height: '100%', minWidth: '84.3%', position: 'absolute', left: 1, color: props.color ? props.color : '#222', }, props.className, props.textStyle]} />
-    {props.icon && <View onStartShouldSetResponder={props.iconPress} style={styles.ViewIcon} ><Icon style={props.styleIcon} name={props.icon} size={props.iconSize ? props.iconSize : 22} color={props.iconColor ? props.iconColor : "#666"} /></View>}
-  </View>
-)
-
+export const Input = React.forwardRef((props, ref) => {
+  return (<TextInput onPressIn={props.onClick} ref={ref} autoCapitalize='none' autoCorrect={false} spellCheck={true}
+    {...props} style={[{ fontFamily, textAlign: "right", fontSize, padding: 10, borderWidth: 1, borderColor: '#999', marginHorizontal: 1.5, borderRadius: 5 }, props.className, props.style]} />)
+})
 
 export const Textarea = React.forwardRef((props, ref) => {
   return (<TextInput onPressIn={props.onClick} autoCapitalize='none' autoCorrect={false} spellCheck={true}
-    ref={ref} multiline {...props} style={[{ fontFamily, fontSize, padding: 15, textAlign: 'right', marginHorizontal: 1.5, borderWidth: 1, borderRadius: 5, color: '#444', fontWeight: '600' }, props.className, props.style]} />)
+    ref={ref} multiline {...props} style={[{ fontFamily, fontSize, height: 90, padding: 4, textAlign: 'right', marginHorizontal: 1.5, borderWidth: 1, borderRadius: 5, color: '#444', fontWeight: '600' }, props.className, props.style]} />)
 })
 
 
@@ -181,10 +107,12 @@ export const Hr = (props) => (<Text {...props} style={[{ width: '100%', marginVe
 export const Mark = (props) => (<Text onPress={props.onClick} {...props} style={{ fontFamily, backgroundColor: '#fc7', height: 40, paddingHorizontal: 3, marginHorizontal: 2, alignSelf: 'center', fontSize, color: '#444', fontWeight: '600' }} >{props.children}</Text>)
 
 
+// export const Table = React.forwardRef((props, ref) => <View ref={ref} onStartShouldSetResponder={props.onClick} {...props} style={[{ flexDirection: 'row-reverse',  flexWrap: 'wrap', minWidth: '100%', height:'100vh' }, props.className, props.style]}>{props.children}</View>)
+
 
 export const Table = React.forwardRef((props, ref) => <View ref={ref} onStartShouldSetResponder={props.onClick} {...props} style={[props.className, props.style]} >{props.children}</View>)
 
-export const TableRow = React.forwardRef((props, ref) => <View ref={ref} onStartShouldSetResponder={props.onClick} {...props} style={[{ flexDirection: 'row-reverse' }, props.className, props.style]} >{props.children}</View>)
+export const TableRow = React.forwardRef((props, ref) => <View ref={ref} onStartShouldSetResponder={props.onClick} {...props} style={[{flexDirection: 'row-reverse'},props.className, props.style]} >{props.children}</View>)
 
 export const Thead = React.forwardRef((props, ref) => <View ref={ref} onStartShouldSetResponder={props.onClick} {...props} style={[{ flexDirection: 'row-reverse', minWidth: '100%' }, props.className, props.style]}>{props.children}</View>)
 
@@ -201,7 +129,7 @@ export const Tb = React.forwardRef((props, ref) =>
 
 
 
-export const Tbtn = React.forwardRef((props, ref) => <View ref={ref} style={[{ flex: 1, backgroundColor: 'white', borderColor: '#666', borderWidth: .8, justifyContent: 'center', alignItems: 'center', borderRadius: 1.5 }, props.style]} ><Button {...props} style={{ width: '99.8%', height: '100%', width: '100%' }} >{props.children}</Button></View>)
+export const Tbtn = React.forwardRef((props, ref) => <View ref={ref} style={[{ flex: 1, backgroundColor: 'white', borderColor: '#666', borderWidth: .8, justifyContent: 'center', alignItems: 'center', borderRadius: 1.5}, props.style]} ><_Button {...props} style={{ width: '99.8%',height:'100%', width:'100%' }} >{props.children}</_Button></View>)
 
 
 export const Tc = React.forwardRef((props, ref) => <View ref={ref} onStartShouldSetResponder={props.onClick} {...props} style={[{ flex: 1 }, props.className, props.style]} >{props.children}</View>)
@@ -213,45 +141,3 @@ export const Tr = React.forwardRef((props, ref) => <View ref={ref} onStartShould
 export const CheckBox = (props) => {
   return <Icon checked={props.show} onPress={() => props.setShow && props.setShow(!props.show)} name={"check"} size={18} color="#fff" {...props} style={[{ width: 18, borderWidth: .9, }, { backgroundColor: props.show === false ? '#fff' : "#2c1" }, props.style]} />
 }
-
-
-
-
-
-
-
-
-
-
-export default Input;
-const styles = StyleSheet.create({
-  ViewIcon: {
-    width: '15%',
-    textAlign: 'center',
-    position: 'absolute',
-    right: 1,
-    borderLeftWidth: .3,
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  input: {
-    textAlign: "right",
-    width: '84.3%',
-    fontSize: 15,
-    padding: 6,
-    height: '100%',
-    minWidth: '84.3%',
-    position: 'absolute',
-    left: 1,
-  },
-  container: {
-    borderWidth: .3,
-    flexDirection: 'row',
-    position: 'relative',
-    minHeight: 55,
-    height: 'auto',
-    borderRadius: 5,
-    backgroundColor: '#fff',
-  },
-})

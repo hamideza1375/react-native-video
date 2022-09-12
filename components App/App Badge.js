@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, View, StyleSheet } from 'react-native';
 import Badge from './components/Badge'
-import Button from './components/Button'
+import {Button} from './components/Html'
 
 
 

@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Button onClick={() => {
-        imagePicker('video')
+        imagePicker('mixed')
           .then((res) => {
             console.log(res)
             // axios.post({image})
@@ -19,7 +19,7 @@ function App() {
       </Button>
       <Br />
       <Button onClick={() => {
-        cameraPicker('mixsed')
+        cameraPicker('video')
           .then((res) => {
             console.log(res)
             // axios.post({image})

@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { KeyboardAvoidingView, Pressable, View, Text, TextInput, Image, StyleSheet, ScrollView, Dimensions, Animated } from 'react-native'
-import Input from './Input'
-import Button from './Button'
-import {CheckBox} from './Html'
+import {Input, Button, CheckBox} from './Html'
 import Swiper from './Swiper'
 import yub from '../states/yub'
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -540,7 +538,7 @@ const Form = ({ f, e, p, cp, m, ch, c, t, pr, im, i, edit, s, gc,ph,
            <Animated.View style={[styles.viewInput,{minHeight:90}, { marginBottom: 5}]} >
                <Swiper 
                cansel={fSwiper?false:true} 
-               style={{ height:'100%',marginBottom:20,paddingBottom:20,minWidth:333}} 
+               style={{ height:'100%',marginBottom:20,paddingBottom:20}} 
                styleRightIcon={{ top: 37 }}
                styleLeftIcon={{ top: 37 }}
                iconLeft={fIconLeft}

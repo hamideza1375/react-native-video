@@ -1,7 +1,7 @@
 import React from 'react';
 import { I18nManager } from 'react-native';
 import ToastProvider, { Toast } from './states/toast'
-import {Button} from './components/Html'
+import Button from './components/Button'
 
 I18nManager.forceRTL(true)
 I18nManager.allowRTL(false)

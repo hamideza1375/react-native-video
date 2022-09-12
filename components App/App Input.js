@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, SafeAreaView, I18nManager } from 'react-native';
-import Input from './components/Input';
+import {Input} from './components/Html';
 
 
 I18nManager.forceRTL(true)
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <SafeAreaView style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
-      <Input placeholder="fullname" icon={'youtube'} iconSize={20} 
+      <Input ref={e=>e&&e.setNativeProps({style:{color:'red'}}) } placeholder="fullname" icon={'youtube'} iconSize={20} 
       color='silver' iconColor='silver'
         style={{ backgroundColor: 'white', height: 40, width: 200 }} />
     </SafeAreaView>

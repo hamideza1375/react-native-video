@@ -3,7 +3,7 @@ import { View, Text, Image, Pressable } from 'react-native';
 
 function Card(prop) {
 
-  const { style, header, body, footer, bgcolor, color, alert, border, img, direction = 'rtl' } = prop
+  const { style, header, body, footer, bgcolor, color, alert, border, img, direction = 'rtl', imageStyle } = prop
 
   return !img ? ((
     !alert ?
@@ -238,7 +238,7 @@ function Card(prop) {
                   height: 70,
                   borderRadius: 50,
                   alignSelf: 'center',
-                }]}
+                },imageStyle]}
                 />
                 {footer &&
                   <View style={[{ paddingVertical:5, color, width: '100%' }, direction === 'rtl' ? { alignSelf: 'flex-start' } : { alignSelf: 'flex-end' }]}><Text style={{ textAlign: 'center' }} >{footer}</Text></View>
@@ -337,7 +337,7 @@ function Card(prop) {
                     height: 70,
                     borderRadius: 50,
                     alignSelf: 'center',
-                  }]}
+                  },imageStyle]}
                   />
                   {footer &&
                     <View style={[{ paddingVertical: 5, color, width: '100%' }, direction === 'rtl' ? { alignSelf: 'flex-start' } : { alignSelf: 'flex-end' }]}><Text style={{ textAlign: 'center' }} >{footer}</Text></View>
