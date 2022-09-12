@@ -1,11 +1,36 @@
-
 import React from 'react';
-import Video from './components/Video';
+import { Br, Button } from './components/Html';
+import { imagePicker, cameraPicker } from './states/imagePicer'
 
-export default function App() {
+
+function App() {
+
+
   return (
-    <Video source={{uri:'https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4'}} controls/>
+    <>
+      <Button onClick={() => {
+        imagePicker('mixed')
+          .then((res) => {
+            console.log(res)
+            // axios.post({image})
+          })
+      }}>
+        imagePicker
+      </Button>
+      <Br />
+      <Button onClick={() => {
+        cameraPicker('video')
+          .then((res) => {
+            console.log(res)
+            // axios.post({image})
+          })
+      }}>
+        cameraPicker
+      </Button>
+
+    </>
   );
 }
 
+export default App;
 

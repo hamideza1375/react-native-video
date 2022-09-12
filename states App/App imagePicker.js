@@ -1,18 +1,32 @@
-import React, { useState } from 'react';
-import Button from './components/Button';
+import React from 'react';
+import { Br, Button } from './components/Html';
 import { imagePicker, cameraPicker } from './states/imagePicer'
 
 
 function App() {
-  
-  const [image, setimage] = useState({})
+
 
   return (
     <>
       <Button onClick={() => {
-        imagePicker('photo', setimage)
-        //! axios.post({image})
-      }}>click</Button>
+        imagePicker('mixed')
+          .then((res) => {
+            console.log(res)
+            // axios.post({image})
+          })
+      }}>
+        imagePicker
+      </Button>
+      <Br />
+      <Button onClick={() => {
+        cameraPicker('video')
+          .then((res) => {
+            console.log(res)
+            // axios.post({image})
+          })
+      }}>
+        cameraPicker
+      </Button>
 
     </>
   );
