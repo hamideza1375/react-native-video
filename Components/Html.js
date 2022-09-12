@@ -161,7 +161,7 @@ export const Small = React.forwardRef((props, ref) => {
 
 export const Input = React.forwardRef((props, ref) =>
   <View style={[styles.container, props.style]} >
-    <TextInput ref={ref} autoCapitalize='none' autoCorrect={false} spellCheck={true} {...props} style={[{ textAlign: "right", fontSize: 15, padding: 6, height: '100%', minWidth: '84.3%', position: 'absolute', left: 1, color: props.color ? props.color : '#222', }, props.className, props.textStyle]} />
+    <TextInput ref={ref} autoCapitalize='none' autoCorrect={false} spellCheck={true} {...props} style={[{ textAlign: "right",maxWidth:'85%', fontSize: 15, padding: 6, height: '100%', minWidth: '84.3%', position: 'absolute', left: 1, color: props.color ? props.color : '#222', }, props.className, props.textStyle]} />
     {props.icon && <View onStartShouldSetResponder={props.iconPress} style={styles.ViewIcon} ><Icon style={props.styleIcon} name={props.icon} size={props.iconSize ? props.iconSize : 22} color={props.iconColor ? props.iconColor : "#666"} /></View>}
   </View>
 )
