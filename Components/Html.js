@@ -49,7 +49,8 @@ export const Button = React.forwardRef((prop, ref) => {
             { color: '#555' } :
             { color: 'white' }) ||
           { color: color },
-          { paddingHorizontal: ph, paddingVertical: pv, fontSize, padding: p, paddingTop: pt, paddingBottom: pb, paddingLeft: pl, paddingRight: pr, }]}>
+          { paddingHorizontal: ph, paddingVertical: pv, fontSize, padding: p, 
+          paddingTop: pt, paddingBottom: pb, paddingLeft: pl, paddingRight: pr, },prop.textStyle]}>
       </_Button>
       :
       <_Button
@@ -69,7 +70,8 @@ export const Button = React.forwardRef((prop, ref) => {
           !color && bgcolor &&
           { color: bgcolor } ||
           { color: '#3399ff' },
-        { paddingHorizontal: ph, paddingVertical: pv, fontSize, padding: p, paddingTop: pt, paddingBottom: pb, paddingLeft: pl, paddingRight: pr }]}>
+        { paddingHorizontal: ph, paddingVertical: pv, fontSize, padding: p,
+           paddingTop: pt, paddingBottom: pb, paddingLeft: pl, paddingRight: pr },prop.textStyle]}>
         {children}
       </_Button>
   )
@@ -456,16 +458,18 @@ export const CheckBox = (props) => {
 
 export const Th = React.forwardRef((props, ref) =>
   <View ref={ref} {...props} style={[{ flex: 1, backgroundColor: 'white', borderColor: '#888',  borderWidth:1.5, justifyContent: 'center', alignItems: 'center', borderRadius: 1.5 }, props.style]} >
-    <Text style={[{ fontFamily, fontWeight: 'bold', fontSize, paddingVertical: 10, textShadowRadius: 1.3, textShadowColor: 'red' }, props.textStyle]}> {props.children}</Text></View>)
+    <Text style={[{ textAlign:'center',fontFamily, fontWeight: 'bold', fontSize:15, paddingVertical: 10, textShadowRadius: 1.3, textShadowColor: 'red' }, props.textStyle]}> {props.children}</Text></View>)
 
 export const Tb = React.forwardRef((props, ref) =>
   <View ref={ref} style={[{ flex: 1, backgroundColor: 'white', borderColor: '#aaa',  borderWidth:1,  justifyContent: 'center', alignItems: 'center', borderRadius: 1.5 }, props.style]} >
-    <Text style={[{ fontFamily, fontWeight: '600', color: '#555', fontSize, paddingVertical: 10, }, props.textStyle]} > {props.children}</Text></View>)
+    <Text style={[{ textAlign:'center',fontFamily, fontWeight: '400', color: '#555', fontSize:15, paddingVertical: 10, }, props.textStyle]} > {props.children}</Text></View>)
 
-export const Tbtn = React.forwardRef((props, ref) => <View ref={ref} style={[{ flex: 1, backgroundColor: 'white', borderColor: '#666', borderWidth: .8, justifyContent: 'center', alignItems: 'center', borderRadius: 1.5 }, props.style]} ><Button {...props} style={{ width: '99.8%', height: '100%', width: '100%' }} >{props.children}</Button></View>)
+export const Tbtn = React.forwardRef((props, ref) => <View ref={ref} style={[{ flex: 1, backgroundColor: 'white', borderColor: '#666', borderWidth: .8, justifyContent: 'center', alignItems: 'center', borderRadius: 1.5, }, props.style]} ><Button {...props} textStyle={[{fontSize:15},props.textStyle]} style={{ width: '99.8%', flex:1, width: '100%', }} >{props.children}</Button></View>)
+
 
 let odd =[]
-export function Table({ body, header, color }) {
+export function Table({ h,fontSize=12,body, header, color,btn1onClick,btn2onClick,btn3onClick,btn4onClick,btn5onClick, btn6onClick, btn7onClick, btn1 ,btn2 ,btn3 ,btn4 ,btn5 ,btn6 ,btn7
+}) {
   for(let i = 0; i <= 100; i++){
     if(i % 2 == 0)
     odd.push(i)
@@ -473,15 +477,22 @@ export function Table({ body, header, color }) {
   let bgColor = (key) => ([{backgroundColor: odd.includes(key) ? color[0] : color[1] }])
   let textStyle ={color:color[2],textShadowColor:color[2]}
   return (
-    <Span style={{ height: '50%', }} >
+    <Span flex={1} >
       <RowSpan flexDirection='row-reverse' >
-        {header.map((f, i) => (<Th key={i} style={[bgColor(1)]} textStyle={[textStyle]}>{f}</Th>))}
+        {header.map((f, i) => (<Th style={[bgColor(1)]} textStyle={[textStyle,{fontSize}]} key={i}>{f}</Th>))}
       </RowSpan>
-      <Span>
+      <Span flex={1}>
         {body.map((f, i) => (
-          <RowSpan flexDirection='row-reverse' key={i}>
+          <RowSpan flex={1} style={{maxHeight:h}} flexDirection='row-reverse' key={i}>
             {Object.values(f).map((a,n) => (
-              <Tb key={n} style={ bgColor(i)} textStyle={textStyle} >{a}</Tb>
+            btn1onClick && n === 0?  <Tbtn key={n} onPress={btn1onClick} style={ bgColor(i)} textStyle={{fontSize}} bgcolor={btn1} >{a}</Tbtn>:
+             btn2onClick && n === 1? <Tbtn key={n} onPress={btn2onClick} style={ bgColor(i)} textStyle={{fontSize}} bgcolor={btn2} >{a}</Tbtn>:
+             btn3onClick && n === 2? <Tbtn key={n} onPress={btn3onClick} style={ bgColor(i)} textStyle={{fontSize}} bgcolor={btn3} >{a}</Tbtn>:
+             btn4onClick && n === 3? <Tbtn key={n} onPress={btn4onClick} style={ bgColor(i)} textStyle={{fontSize}} bgcolor={btn4} >{a}</Tbtn>:
+             btn5onClick && n === 4? <Tbtn key={n} onPress={btn5onClick} style={ bgColor(i)} textStyle={{fontSize}} bgcolor={btn5} >{a}</Tbtn>:
+             btn6onClick && n === 5? <Tbtn key={n} onPress={btn6onClick} style={ bgColor(i)} textStyle={{fontSize}} bgcolor={btn6} >{a}</Tbtn>:
+             btn7onClick && n === 6? <Tbtn key={n} onPress={btn7onClick} style={ bgColor(i)} textStyle={{fontSize}} bgcolor={btn7} >{a}</Tbtn>:
+              <Tb key={n} style={ bgColor(i)} textStyle={[textStyle,{fontSize}]} >{a}</Tb>
             ))}
           </RowSpan>
         ))}

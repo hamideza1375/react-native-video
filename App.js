@@ -7,14 +7,32 @@ function App() {
   return (
       <Table 
        color={['#555','#656565','white']}
-        header={['title', 'edit', 'delete','for']}
+        header={['عنوان', 'ویرایش', 'حذف','دیدن','پاک کردن', 'توضیحات',]}
         body={
           [ 
-            ['title1', 'edit1','delete1','for1' ],
-            ['title2', 'edit2','delete2','for2' ],
-            ['title3', 'edit3','delete3','for3' ],
+            ['عنوان', 'ویرایش', 'حذف','دیدن','پاک کردن', 'توضیحات', ],
+            ['عنوان', 'ویرایش', 'حذف','دیدن','پاک کردن', 'توضیحات', ],
+            ['عنوان', 'ویرایش', 'حذف','دیدن','پاک کردن', 'توضیحات', ],
+            ['عنوان', 'ویرایش', 'حذف','دیدن','پاک کردن', 'توضیحات', ],
         ]
-        } />
+        }
+        btn1={'red'}
+        btn1onClick={()=>{alert('red')}}
+        btn2={'green'}
+        btn2onClick={()=>{alert('green')}}
+        btn3={'pink'}
+        btn3onClick={()=>{alert('pink')}}
+        btn4={'blue'}
+        btn4onClick={()=>{alert('blue')}}
+        btn5={'black'}
+        btn5onClick={()=>{alert('black')}}
+        btn6={'silver'}
+        btn6onClick={()=>{alert('silver')}}
+        btn7={'yellow'}
+        btn7onClick={()=>{alert('yellow')}}
+        h={55}
+        fontSize={10}
+        />
   )
 }
 
